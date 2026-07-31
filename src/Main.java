@@ -2,7 +2,10 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
+        //SEÇÃO DE VARIÁVEIS
         int opcao;
+        int quantidade = 0;
 
         String[] tarefas = new String[7];
 
@@ -30,14 +33,17 @@ public class Main {
                     System.exit(0);
                     break;
                 case 1:
-                    for (int quantidade = 0; quantidade < 5; quantidade ++){
-
                         System.out.println("Você selecionou -- CADASTRAR TAREFA --\n");
-                        System.out.print("DESCRIÇÃO DA TAREFA: ");
 
-                        tarefas[quantidade] = scanner.nextLine();
-                        System.out.println("Tarefa Cadastrada com Sucesso!");
-                    }
+                        if(quantidade < tarefas.length){
+                            System.out.print("DESCRIÇÃO DA TAREFA: ");
+                            tarefas[quantidade] = scanner.nextLine();
+                            quantidade++;
+
+                            System.out.printf("Tarefa N° %d cadastrada com sucesso!\n\n", quantidade);
+                        } else {
+                            System.out.println("Lamento, mas a quantidade de Tarefas EXCEDIDA!\n");
+                        }
                     break;
                 case 2:
                     System.out.println("Você selecionou -- LISTAR TAREFAS --");
