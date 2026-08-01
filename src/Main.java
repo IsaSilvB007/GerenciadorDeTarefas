@@ -28,54 +28,75 @@ public class Main {
             opcao = scanner.nextInt();
             scanner.nextLine(); //Esse scanner.nextLine limpa o '\n' que ficou no buffer (armazenamento temporário)
 
-            switch (opcao){
+            switch (opcao) {
                 case 0:
                     System.exit(0);
                     break;
                 case 1:
-                        System.out.println("Você selecionou -- CADASTRAR TAREFA --\n");
+                    System.out.println("Você selecionou -- CADASTRAR TAREFA --\n");
 
-                        if(quantidade < tarefas.length){
-                            System.out.print("DESCRIÇÃO DA TAREFA: ");
-                            tarefas[quantidade] = scanner.nextLine();
-                            quantidade++;
+                    if (quantidade < tarefas.length) {
+                        System.out.print("DESCRIÇÃO DA TAREFA: ");
+                        tarefas[quantidade] = scanner.nextLine();
+                        quantidade++;
 
-                            System.out.printf("Tarefa N° %d cadastrada com sucesso!\n\n", quantidade);
-                        } else {
-                            System.out.println("Lamento, mas a quantidade de Tarefas EXCEDIDA!\n");
-                        }
+                        System.out.printf("Tarefa N° %d cadastrada com sucesso!\n\n", quantidade);
+                    } else {
+                        System.out.println("Lamento, mas a quantidade de Tarefas EXCEDIDA!\n");
+                    }
                     break;
                 case 2:
                     System.out.println("Você selecionou -- LISTAR TAREFAS --\n");
 
-                    for(int i = 0; i < quantidade; i++){
+                    for (int i = 0; i < quantidade; i++) {
                         System.out.println("Tarefa N°" + (i + 1) + ": " + tarefas[i]);
                     }
                     break;
                 case 3:
                     System.out.println("Você selecionou -- CONCLUIR TAREFA --");
 
-                    if (quantidade == 0){
+                    if (quantidade == 0) {
                         System.out.println("Lamento, mas não há tarefas cadastradas para serem concluídas");
                     } else {
                         System.out.print("Informe o N° da tarefa a ser concluída: ");
                         int escolha = scanner.nextInt();
-                            if (escolha >= 1 && escolha <= quantidade){
+                        if (escolha >= 1 && escolha <= quantidade) {
 
-                                tarefas[escolha - 1] = "[X] " + tarefas[escolha - 1];
-                                System.out.println("\nTarefa N°" + (escolha) + " concluída com sucesso!\n");
-                            } else {
-                                System.out.println("Número de tarefa inválida!");
-                            }
+                            tarefas[escolha - 1] = "[X] " + tarefas[escolha - 1];
+                            System.out.println("\nTarefa N°" + (escolha) + " concluída com sucesso!\n");
+                        } else {
+                            System.out.println("Número de tarefa inválida!");
+                        }
                     }
                     break;
                 case 4:
                     System.out.println("Você selecionou -- REMOVER TAREFA --");
-                    break;
-                default:
-                    System.out.println("Opção INVÁLIDA! Tente novamente...");
-            }
-        } while (opcao != 0);
 
-    }
+                    if (quantidade == 0) {
+                        System.out.println("Lamento, mas não há tarefas cadastradas para serem removidas");
+                    } else {
+                        System.out.print("Informe o N° da tarefa a ser excluída: ");
+                        int escolha = scanner.nextInt();
+
+                        if (escolha >= 1 && escolha <= quantidade) {
+                            for (int i = escolha - 1; i < quantidade - 1; i++) {
+                                tarefas[i] = tarefas[i + 1];
+                            }
+                            quantidade--;
+                            tarefas[quantidade] = null;
+
+                            System.out.println("\nTarefa N°" + escolha + " removida com sucesso!\n");
+                        } else {
+                            System.out.println("Lamento, mas o número inserido é inválido!");
+                        }
+                    }
+                        break;
+
+                        default:
+                            System.out.println("Opção INVÁLIDA! Tente novamente...");
+                    }
+            }
+            while (opcao != 0) ;
+
+        }
     }
