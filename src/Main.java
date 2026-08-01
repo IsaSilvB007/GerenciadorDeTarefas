@@ -46,7 +46,11 @@ public class Main {
                         }
                     break;
                 case 2:
-                    System.out.println("Você selecionou -- LISTAR TAREFAS --");
+                    System.out.println("Você selecionou -- LISTAR TAREFAS --\n");
+
+                    for(int i = 0; i < quantidade; i++){
+                        System.out.println("Tarefa N°" + (i + 1) + ": " + tarefas[i]);
+                    }
                     break;
                 case 3:
                     System.out.println("Você selecionou -- CONCLUIR TAREFA --");
