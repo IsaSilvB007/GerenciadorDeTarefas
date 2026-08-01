@@ -54,6 +54,20 @@ public class Main {
                     break;
                 case 3:
                     System.out.println("Você selecionou -- CONCLUIR TAREFA --");
+
+                    if (quantidade == 0){
+                        System.out.println("Lamento, mas não há tarefas cadastradas para serem concluídas");
+                    } else {
+                        System.out.print("Informe o N° da tarefa a ser concluída: ");
+                        int escolha = scanner.nextInt();
+                            if (escolha >= 1 && escolha <= quantidade){
+
+                                tarefas[escolha - 1] = "[X] " + tarefas[escolha - 1];
+                                System.out.println("Tarefa N°" + (escolha) + " concluída com sucesso!\n");
+                            } else {
+                                System.out.println("Número de tarefa inválida!");
+                            }
+                    }
                     break;
                 case 4:
                     System.out.println("Você selecionou -- REMOVER TAREFA --");
